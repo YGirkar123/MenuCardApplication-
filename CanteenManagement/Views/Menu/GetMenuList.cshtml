@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CanteenManagement.Models.MenuModel>
+
+@{
+    ViewBag.Title = "GetMenuList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetMenuList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddMenuList")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditMenu", new { id = item.ID }) |
+
+            @Html.ActionLink("Delete", "DeleteMenu", new { id = item.ID },
+           new { onclick = "return confirm('Are sure wants to delete?');" })
+        </td>
+    </tr>
+}
+
+</table>
